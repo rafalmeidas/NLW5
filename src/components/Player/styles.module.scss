@@ -22,7 +22,7 @@
         font-weight: 600;
     }
 
-    footer {
+    footer { //Botões
         // Já que a classe acima está com align-items: center vai tentar jogar tudo para o centro
         // Com o stretch vai obrigar a ocupar a largura toda do footer.
         align-self: stretch;
@@ -32,6 +32,29 @@
             opacity: 0.6;
         }
     }
+}
+
+.currentEpisode {
+    text-align: center;
+
+    img {
+        border-radius: 1.5rem;
+    }
+
+    strong {
+        display: block;
+        margin-top: 2rem;
+        font: 600 1.25rem Lexend, sans-serif;
+        line-height: 1.75rem;
+    }
+
+    span {
+        display: block;
+        margin-top: 1rem;
+        opacity: 0.6;
+        line-height: 1.5rem;
+    }
+
 }
 
 .emptyPlayer {
@@ -65,12 +88,11 @@
         flex: 1;
 
         .emptySlider {
-            width:100%;
-            height:4px;
+            width: 100%;
+            height: 4px;
             background: var(--purple-300);
         }
     }
-
 }
 
 .buttons {
@@ -84,13 +106,28 @@
         background: transparent;
         border: 0;
         font-size: 0; //Quando só tem imagem dentro do botão ele centraliza ela
+
         
+
+        //Se o botão estiver desabilitado não deixa clicar
+        &:disabled {
+            cursor: not-allowed;
+        }
+
+        transition: filter 0.2s;
+        &:hover:not(disabled){
+            filter: brightness(0.7);
+        }
+
         &.playButton {
-            width:4rem;
-            height:4rem;
+            width: 4rem;
+            height: 4rem;
             border-radius: 1rem;
             background: var(--purple-400);
+
+            &:hover:not(disabled) {
+                filter: brightness(0.95);
+            }
         }
     }
-
 }
