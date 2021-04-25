@@ -27,7 +27,7 @@
         // Com o stretch vai obrigar a ocupar a largura toda do footer.
         align-self: stretch;
 
-        &.empty {
+        &.empty .progress{
             //Quando estiver com essa classe vai ficar assim
             opacity: 0.6;
         }
@@ -107,16 +107,24 @@
         border: 0;
         font-size: 0; //Quando só tem imagem dentro do botão ele centraliza ela
 
-        
+        transition: filter 0.2s;
 
         //Se o botão estiver desabilitado não deixa clicar
         &:disabled {
             cursor: not-allowed;
+            opacity: 0.5;
         }
 
-        transition: filter 0.2s;
-        &:hover:not(disabled){
+        &:hover:not(:disabled){
             filter: brightness(0.7);
+        }
+
+        &.isActive {
+            filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+        }
+
+        &.isActive:hover {
+            filter: brightness(0.6) invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
         }
 
         &.playButton {
@@ -125,7 +133,7 @@
             border-radius: 1rem;
             background: var(--purple-400);
 
-            &:hover:not(disabled) {
+            &:hover:not(:disabled) {
                 filter: brightness(0.95);
             }
         }
